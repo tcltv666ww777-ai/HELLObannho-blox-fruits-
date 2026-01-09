@@ -1,3 +1,13 @@
+-- Khởi tạo thư viện Panda Auth từ server
+local PandaAuth = loadstring(game:HttpGet("https://api-v2.panda-auth.com/v2/api.lua"))()
+
+-- ID Dịch vụ của bạn đã đăng ký trên web
+local ServiceID = "cmk6n3rcp1z4xf98vj5sq25mw"
+
+-- Lệnh tự động hiện bảng nhập Key và kiểm tra
+if PandaAuth:Authenticate(ServiceID) then
+    print("Xác thực thành công! Đang mở Banana Hub...")
+
 local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))();
 local v15 = v14:CreateWindow({
     Title = "Banana Cat Hub-Blox Fruit [ Premium ]",-- thay tên bạn muốn đặt
@@ -9026,5 +9036,11 @@ spawn(function()
         end
     end
 end);
-
-
+else
+    -- Thông báo khi xác thực thất bại và dẫn link Discord của bạn
+    warn("Lỗi xác thực! Vui lòng truy cập để lấy key: https://discord.gg/p5jwmU64T")
+    
+    -- Tự động copy link lấy key cho người dùng (nếu bạn đã cài đặt link vượt quảng cáo)
+    local keyLink = PandaAuth:GetKey(ServiceID)
+    setclipboard(keyLink)
+end
