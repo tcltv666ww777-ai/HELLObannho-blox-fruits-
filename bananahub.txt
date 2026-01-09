@@ -9083,12 +9083,5 @@ spawn(function()
         end
     end
 end);
-else
-    -- Thông báo khi xác thực thất bại và dẫn link Discord của bạn
-    warn("Lỗi xác thực! Vui lòng truy cập để lấy key: https://discord.gg/p5jwmU64T")
-    
-    -- Tự động copy link lấy key cho người dùng (nếu bạn đã cài đặt link vượt quảng cáo)
-    local keyLink = PandaAuth:GetKey(ServiceID)
-    setclipboard(keyLink)
-end
+
 
